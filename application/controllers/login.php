@@ -2,15 +2,38 @@
 
 class Login extends CI_Controller {
 
-	public function __construct()
-    {
+	public function __construct(){
         parent::__construct();
+        $this->load->model('m_login');
     }
 
-	public function index()
-	{
+	function index(){
+
 		$data = array('content' => 'setup/login');
 		$this->load->view('setup/index', $data);
+	
 	}
 	
+	function ceklogin(){
+
+		$username = $this->input->post('username');
+		$password = md5($this->input->post('password'));
+
+		$query = $this->m_login->cekLogin($username,$password);
+		if($query->num_rows() > 0){
+			foreach ($query->result() as $value) {
+				$sessionArray['data'] = array(
+					'id'=>$value->id,                    
+                    'username'=>$value->user,
+                    'password'=>$value->password,
+                    'name'=>$value->name
+                );
+                $this->session->set_userdata($sessionArray);
+			}
+			echo "TRUE";
+		}else{
+			echo "FALSE";
+		}
+
+	}
 }
