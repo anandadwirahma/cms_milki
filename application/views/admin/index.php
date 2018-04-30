@@ -139,7 +139,7 @@
             </a>
           </li>
           <li>
-            <a href="<?php echo base_url(); ?>admin/profile">
+            <a href="<?php echo base_url(); ?>admin/account">
               <i class="fa fa-user"></i>
               <span>Admin</span>
             </a>
