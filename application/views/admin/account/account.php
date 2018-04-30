@@ -11,7 +11,7 @@
       <a href="#">
         <i class="fa fa-dashboard"></i> Admin</a>
     </li>
-    <li class="active">Show Data</li>
+    <li class="active">Data Admin</li>
   </ol>
 </section>
 
