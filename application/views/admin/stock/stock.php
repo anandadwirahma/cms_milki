@@ -1,4 +1,11 @@
-<?php echo $this->session->flashdata("alert-confirm"); ?>
+<?php 
+  echo $this->session->flashdata("alert-confirm"); 
+
+  function rupiah($angka){
+    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+    return $hasil_rupiah;
+  }
+?>
 
 <!-- Header Content -->
 <section class="content-header">
@@ -9,9 +16,9 @@
   <ol class="breadcrumb">
     <li>
       <a href="#">
-        <i class="fa fa-dashboard"></i> Home</a>
+        <i class="fa fa-dashboard"></i> Stock</a>
     </li>
-    <li class="active">Add Stock</li>
+    <li class="active">Data Stock</li>
   </ol>
 </section>
 
@@ -21,7 +28,7 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Add Stock</h3>
+          <h3 class="box-title">Data Stock</h3>
         </div>
         <div class="box-header">
           <a class="btn btn-primary btn-icon" title="Tambah Data." data-container="body" data-placement="bottom" data-toggle="tooltip"
@@ -63,7 +70,7 @@
                 </td>
                 <td>
                   <center>
-                    <?php echo $value->harga; ?>
+                    <?php echo rupiah($value->harga); ?>
                   </center>
                 </td>
                 <td>
