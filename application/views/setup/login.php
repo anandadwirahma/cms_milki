@@ -1,7 +1,7 @@
 <div class="container">
   <div class="login-logo off-canvas">
     <a href="#">
-      <img src="<?php echo base_url(); ?>assets/img/milkilogo.png ?>" width="40%" height="40%" alt="company logo">
+      <img src="<?php echo base_url(); ?>assets/img/milkilogo.png; ?>" width="40%" height="40%" alt="company logo">
     </a>
   </div>
 
