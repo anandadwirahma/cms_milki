@@ -89,10 +89,11 @@
                       if ($value->status_payment == 1) {
 
                           $status = '<a class="btn btn-warning btn-icon" data-container="body" data-placement="bottom" style="pointer-events: none;cursor:default;" data-toggle="tooltip"> <span>Waiting Payment</span> </a>';
-            
+
                       }
 
-                    echo $status; ?>
+                      echo $status;
+                    ?>
                   </center>
                 </td>
                 <td>
@@ -127,7 +128,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
       </div>
     </div>
   </div>
