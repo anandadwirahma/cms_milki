@@ -49,7 +49,7 @@ class Order extends CI_Controller {
 
 
             $output .= ' 
-                <dt>Nama Pemesanan :</dt>
+                <dt>Tanggal Pemesanan :</dt>
                     <dd>'. $tgl . '</dd>
                 <dt>Nama Pemesan :</dt>
                     <dd>'. $nama . '</dd>
