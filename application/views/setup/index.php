@@ -23,7 +23,7 @@
 	    $("#loginform").submit(function () {
 
 	        $.ajax({
-	            url: "<?php echo site_url('login/ceklogin');?>",
+	            url: "<?php echo site_url('http://milki.herokuapp.com/login/ceklogin');?>",
 	            type: "POST",
 	            data: {
 	                username: $('#Username').val(),
