@@ -16,6 +16,7 @@ class Order extends CI_Controller {
 	{
         $getData = $this->m_order->getData();
         $data = array('content' => 'admin/order/order', 'sessiondata' => $this->session->userdata('data'), 'getdata' => $getData);
+
         $this->load->view('admin/index', $data);
 	}
 
@@ -65,7 +66,7 @@ class Order extends CI_Controller {
                     <dd>'. $status . '</dd>
             ';
 
-        echo $output;
+            echo $output;
     }
 
 }

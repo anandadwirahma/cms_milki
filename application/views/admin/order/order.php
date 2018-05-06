@@ -87,9 +87,15 @@
                   <center>
                     <?php 
                       if ($value->status_payment == 1) {
-
-                          $status = '<a class="btn btn-warning btn-icon" data-container="body" data-placement="bottom" style="pointer-events: none;cursor:default;" data-toggle="tooltip"> <span>Waiting Payment</span> </a>';
-
+                          $status = '<a href="'. base_url() .'tracker/status/'. $value->id_order .'" target="_blank" class="btn btn-warning btn-icon" data-container="body" data-placement="bottom" data-toggle="tooltip"> <span>Waiting Payment</span> </a>';
+                      } elseif ($value->status_payment == 2) {
+                        $status = '<a href="'. base_url() .'tracker/status/'. $value->id_order .'" target="_blank" class="btn btn-info btn-icon" data-container="body" data-placement="bottom" data-toggle="tooltip"> <span>Confirm Payment</span> </a>';
+                      } elseif ($value->status_payment == 3) {
+                        $status = '<a href="'. base_url() .'tracker/status/'. $value->id_order .'" target="_blank" class="btn btn-primary btn-icon" data-container="body" data-placement="bottom" data-toggle="tooltip"> <span>Processing Order</span> </a>';
+                      } elseif ($value->status_payment == 4) {
+                        $status = '<a href="'. base_url() .'tracker/status/'. $value->id_order .'" target="_blank" class="btn btn-warning btn-icon" data-container="body" data-placement="bottom" data-toggle="tooltip"> <span>Order Shipped</span> </a>';
+                      } elseif ($value->status_payment == 5) {
+                        $status = '<a href="'. base_url() .'tracker/status/'. $value->id_order .'" target="_blank" class="btn btn-success btn-icon" data-container="body" data-placement="bottom" data-toggle="tooltip"> <span>Order Received</span> </a>';
                       }
 
                       echo $status;
