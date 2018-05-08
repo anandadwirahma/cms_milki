@@ -128,12 +128,40 @@ class Snap extends CI_Controller {
 		echo $snapToken;
     }
 
-    public function finish()
+    public function checkout()
     {
     	$result = json_decode($this->input->post('result_data'));
-    	echo 'RESULT <br><pre>';
-    	var_dump($result);
-    	echo '</pre>' ;
+    	// echo 'RESULT <br><pre>';
+    	// var_dump($result);
+    	// echo '</pre>' ;
 
+    	$order_id = $result->order_id;
+    	$status_payment = $this->midtrans->status($result->order_id);
+    	$data = array(
+	            "id_order" => $order_id,
+	            "datetime" => $status_payment->transaction_time,
+	            "status" => $status_payment->transaction_status,
+	            "description" => $status_payment->payment_type
+        	);
+
+    	if ($result->payment_type == 'credit_card') {
+        	$status = 3;
+    	} elseif ($result->payment_type == 'bank_transfer') {
+    		$status = 2;
+    	}
+
+
+    	$this->m_payment->updateTracker($data); //update tracker
+    	$this->m_payment->updtStatusorder($order_id, $status); //update status in table order
+    	redirect('/tracker/status/' . $order_id, 'refresh');
+
+    }
+
+    public function notification()
+    {
+    	$json_result = file_get_contents('php://input');
+		$result = json_decode($json_result);
+
+		echo $result;
     }
 }

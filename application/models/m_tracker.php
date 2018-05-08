@@ -20,4 +20,16 @@ class m_tracker extends CI_Model {
 		return $this->db->get()->result();
 	}
 
+	public function updatePayment($id_order,$datetime,$status,$desc)
+	{
+		$this->db->query("INSERT IGNORE INTO tracker (id_order,`datetime`,`status`,description) VALUES ('$id_order','$datetime','$status','$desc');");
+	}
+
+	public function updateOrder($id_order)
+	{
+		$this->db->set('status_payment', 'expire');
+		$this->db->where('id_order', $id_order);
+		$this->db->update('order');
+	}
+
 }

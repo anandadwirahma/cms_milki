@@ -12,7 +12,7 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-	<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<CLIENT-KEY>"></script>
+	<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-7FdXho5u4vkP219w"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
 	    rel='stylesheet' type='text/css'>
@@ -48,13 +48,17 @@
 							  if ($value->status_payment == 1) {
 		                        echo "Waiting Payment";
 		                      } elseif ($value->status_payment == 2) {
-		                        echo "Confirm Payment";
+		                        echo "Checkout Payment";
 		                      } elseif ($value->status_payment == 3) {
 		                        echo "Processing Order";
 		                      } elseif ($value->status_payment == 4) {
 		                        echo "Order Shipped";
 		                      } elseif ($value->status_payment == 5) {
 		                        echo "Order Received";
+		                      } elseif ($value->status_payment == 'expire') {
+		                ?>		
+		                		<font color='red'><?php echo "Expired Payment"; ?></font>
+		                <?php
 		                      }
                       	?>
 					</span>
@@ -83,7 +87,7 @@
 						<img src="<?php echo base_url() ?>assets/trackorder/images/checkout.png">
 					</div>
 					<span class="line" style="background-color:<?php if(2 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;"></span>
-					<p>Confirm Payment</p>
+					<p>Checkout Payment</p>
 				</div>
 				<div class="quality">
 					<div class="imgcircle" style="background-color:<?php if(3 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;">
@@ -109,21 +113,7 @@
 			</div>
 			<br>
 			<div>
-				<div>
-					<center>Lakukan pembayaran sebelum :
-						<b>
-							<font color="red">2018-04-25 14:12:33</font>
-						</b>
-					</center>
-				</div>
-				<br>
-				<div>
-					<center>
-						<a class="btn btn-primary btn-icon" id="pay-button" id-order="<?php echo $value->id_order; ?>">
-							<span>Bayar</span>
-						</a>
-					</center>
-				</div>
+				<?php echo $footerTracker; ?>
 			</div>
 		</div>
 		<?php }; ?>
@@ -136,7 +126,7 @@
 
 
 	<!-- Form For Payment Midtrans -->
-	<form id="payment-form" method="post" action="<?=site_url()?>/snap/finish">
+	<form id="payment-form" method="post" action="<?=site_url()?>payment/snap/checkout">
 		<input type="hidden" name="result_type" id="result-type" value="">
 		</div>
 		<input type="hidden" name="result_data" id="result-data" value="">

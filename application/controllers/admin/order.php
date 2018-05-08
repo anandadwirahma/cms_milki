@@ -10,6 +10,11 @@ class Order extends CI_Controller {
         	redirect('login');
         }
         $this->load->model('admin/m_order');
+
+        $params = array('server_key' => 'SB-Mid-server-Pw65IpYG-neuNnO4FKzerfqD', 'production' => false);
+        $this->load->library('midtrans');
+        $this->midtrans->config($params);
+        $this->load->helper('url'); 
     }
 
 	public function index()

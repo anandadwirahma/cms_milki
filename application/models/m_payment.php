@@ -20,4 +20,16 @@ class m_payment extends CI_Model {
 		return $this->db->get()->result();
 	}
 
+	public function updateTracker($data)
+	{
+		$this->db->insert('tracker',$data);
+	}
+
+	public function updtStatusorder($id_order,$status)
+	{
+		$this->db->set('status_payment', $status);
+		$this->db->where('id_order', $id_order);
+		return $this->db->update('order');
+	}
+
 }
