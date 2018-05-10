@@ -22,7 +22,7 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'http://localhost/cms_milki/';
+//$config['base_url'] = 'http://localhost/cms_milki/';
 $config['base_url'] = 'https://milki.herokuapp.com/';
 //$config['base_url'] = 'https://e3135c36.ngrok.io/cms_milki/';
 /*
