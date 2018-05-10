@@ -5,13 +5,11 @@ class Tracker extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-        // if($this->session->userdata('data') == null){
-        // 	redirect('login');
-        // }
         $params = array('server_key' => 'SB-Mid-server-Pw65IpYG-neuNnO4FKzerfqD', 'production' => false);
         $this->load->library('midtrans');
         $this->midtrans->config($params);
-        $this->load->helper('url');
+        $this->load->helper('url'); 
+
 
         $this->load->model('m_tracker');
     }
