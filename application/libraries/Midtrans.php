@@ -129,7 +129,7 @@ class Midtrans {
 	      throw new Exception('CURL Error: ' . curl_error($ch), curl_errno($ch));
 	    }
 	    else {
-	      $result_array = get_tags(json_decode($result););
+	      $result_array = json_decode($result);
 	      if ($info['http_code'] != 201 && !in_array($result_array->status_code, array(200, 201, 202, 407)) ) {
         $message = 'Midtrans Error (' . $info['http_code'] . '): '
             . implode(',', $result_array->error_messages);
