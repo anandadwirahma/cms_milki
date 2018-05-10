@@ -32,7 +32,6 @@ class Tracker extends CI_Controller {
             $this->m_tracker->updateOrder($id_order);
         }
 
-
         $getOrder = $this->m_tracker->getOrder($id_order);
         foreach ($getOrder as $value) {
             $status = $value->status_payment;
