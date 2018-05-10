@@ -131,8 +131,8 @@ class Midtrans {
 	    else {
 	      $result_array = json_decode($result);
 	      if ($info['http_code'] != 201 && !in_array($result_array->status_code, array(200, 201, 202, 407)) ) {
-        $message = 'Midtrans Error (' . $info['http_code'] . '): ';print_r($message);exit; 
-          . implode(',', (array) $result_array->error_messages);
+        $message = 'Midtrans Error (' . $info['http_code'] . '): '; 
+          . implode(',', (array) $result_array->error_message);
         throw new Exception($message, $info['http_code']);
 
       }
