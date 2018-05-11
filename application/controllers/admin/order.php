@@ -44,7 +44,7 @@ class Order extends CI_Controller {
 
                 $status = '<a class="btn btn-warning btn-icon" data-container="body" data-placement="bottom" style="pointer-events: none;cursor:default;" data-toggle="tooltip"> <span>Waiting Payment</span> </a>';
             
-            } else if (condition) {
+            } else if ($value->status_payment == 2) {
                 
                 $status = '<a class="btn btn-info btn-icon" data-container="body" data-placement="bottom" style="pointer-events: none;cursor:default;" data-toggle="tooltip"> <span>Confirm Payment</span> </a>';
 
