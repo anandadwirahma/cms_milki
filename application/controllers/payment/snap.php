@@ -144,7 +144,6 @@ class Snap extends CI_Controller {
 	            "description" => $status_payment->payment_type
         	);
 
-    	print_r($data);exit;
     	if ($result->payment_type == 'credit_card') {
         	$status = 3;
     	} elseif ($result->payment_type == 'bank_transfer') {
