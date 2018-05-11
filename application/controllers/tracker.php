@@ -18,21 +18,23 @@ class Tracker extends CI_Controller {
     {
         $id_order = $this->uri->segment(3);
 
-        //-Trigger check status transaction
-        $status_payment = $this->midtrans->status($id_order);
-        $transaction_time = $status_payment->transaction_time;
-        $transaction_status = $status_payment->transaction_status;
-        $payment_type = $status_payment->payment_type;
-
-        //-Update payment if expired status
-        $this->m_tracker->updatePayment($id_order,$transaction_time,$transaction_status,$payment_type);
-        if ($transaction_status == 'expire') {
-            $this->m_tracker->updateOrder($id_order);
-        }
-
         $getOrder = $this->m_tracker->getOrder($id_order);
         foreach ($getOrder as $value) {
             $status = $value->status_payment;
+        }
+
+        if ($status > 1) {
+            //-Trigger check status transaction
+            $status_payment = $this->midtrans->status($id_order);
+            $transaction_time = $status_payment->transaction_time;
+            $transaction_status = $status_payment->transaction_status;
+            $payment_type = $status_payment->payment_type;
+
+            //-Update payment if expired status
+            $this->m_tracker->updatePayment($id_order,$transaction_time,$transaction_status,$payment_type);
+            if ($transaction_status == 'expire') {
+                $this->m_tracker->updateOrder($id_order);
+            }
         }
 
 
