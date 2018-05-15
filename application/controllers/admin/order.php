@@ -82,4 +82,70 @@ class Order extends CI_Controller {
             echo $output;
     }
 
+    function status (){
+        $id_order = $this->uri->segment(4);
+        $getOrder = $this->m_order->getOrder($id_order);
+        $getTracker = $this->m_order->getTracker($id_order);
+        $detailShipping = $this->m_order->detailShipping($id_order);
+
+        $data = array('content' => 'admin/order/status_order', 'title' => 'Status Order' ,'sessiondata' => $this->session->userdata('data'),'getdata' => $getOrder, 'getTracker' => $getTracker, 'detailShipping' => $detailShipping);
+        $this->load->view('admin/index', $data);
+    }
+
+    function currier(){
+        $id_order = $this->uri->segment(4);
+
+        $getCurrier = $this->m_order->getCurrier();
+
+        $data = array('content' => 'admin/order/select_currier', 'title' => 'Select Currier' ,'sessiondata' => $this->session->userdata('data'), 'getCurrier' => $getCurrier, 'id_order' => $id_order);
+        $this->load->view('admin/index', $data);
+    }
+
+    function curriertask(){
+
+        $output = '';
+        $currierid = $this->input->post('currierid');
+
+        $getCurriertask = $this->m_order->getCurriertask($currierid);
+        
+        $output .= '<dl>';
+        // $orderitem = '';
+        foreach ($getCurriertask as $value) {
+        
+            $output .= ' 
+                   <dt>Nama Pemesan :</dt>
+                    <dd>'. $value->nama .'</dd>
+                   <dt>Location :</dt>
+                    <dd>'. $value->lokasi .'</dd>
+                    <hr>
+            ';
+        }
+
+        echo $output;
+
+    }
+
+    function process_currier(){
+        $orderid = $this->input->post('orderid');
+        $currierid = $this->input->post('currierid');
+
+        $data = array(
+            "id_order" => $orderid,
+            "id_currier" => $currierid,
+            "status" => 'on progress'
+        );
+        $this->m_order->saveShipping($data);
+
+        $data = array(
+                "id_order" => $orderid,
+                "datetime" => date('Y-m-d H:i:s'),
+                "status" => 'on delivery',
+                "description" => $currierid
+            );
+        $this->m_order->updateTracker($data);
+        $this->m_order->updtStatusorder($orderid,4);
+
+        redirect('admin/order/status/'. $orderid);
+    }
+
 }

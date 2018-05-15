@@ -27,22 +27,22 @@
         </div>
 
         <?php 
-          $id = '';
-          $user = '';
-          $password = '';
-          $name = '';
-          $url = 'saveData';
-        
-          if(isset($data_account)){
-        
-            $id = $data_account[0]->id;
-            $user= $data_account[0]->user;
-            $password = $data_account[0]->password;
-            $name = $data_account[0]->name;
-            $url = 'updateData';
-          
-          }
-        ?>
+      $id = '';
+      $user = '';
+      $password = '';
+      $name = '';
+      $url = 'saveData';
+      
+      if(isset($data_account)){
+      
+        $id = $data_account[0]->id;
+        $user= $data_account[0]->user;
+        $password = $data_account[0]->password;
+        $name = $data_account[0]->name;
+        $url = 'updateData';
+      
+      }
+      ?>
 
         <form role="form" class="form-horizontal" action="<?php echo base_url() ?>admin/account/<?=$url;?>" method="post" enctype="multipart/form-data">
           <div class="box-body">
@@ -58,6 +58,18 @@
 
               <div class="col-sm-6">
                 <input type="text" name="name" data-validation="required" class="form-control" value="<?php echo $name; ?>" placeholder="Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">Rule</label>
+
+              <div class="col-sm-2">
+                <select name="rule" data-validation="required" class="form-control">
+                  <option value="">-Select Rule-</option>
+                  <option value="1">Admin</option>
+                  <option value="2">Currier</option>
+                  <option value="3">Karyawan</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
@@ -87,9 +99,9 @@
 </script>
 <!-- JS Check URL Image -->
 <script>
-    $(document).ready(function () {
-        $('#submit-form').click(function(){
-          
-        });
+  $(document).ready(function () {
+    $('#submit-form').click(function () {
+
     });
+  });
 </script>

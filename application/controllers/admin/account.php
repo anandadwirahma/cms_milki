@@ -29,7 +29,8 @@ class Account extends CI_Controller {
         $data = array(
             "user" => $this->input->post('username'),
             "password" => md5($this->input->post('password')),
-            "name" => $this->input->post('name')
+            "name" => $this->input->post('name'),
+            "rule" => $this->input->post('rule')
         );
         
         $this->m_account->saveData($data);

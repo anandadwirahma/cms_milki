@@ -72,6 +72,15 @@ class Tracker extends CI_Controller {
                     </center>
                 </div>
                 <br>";
+        } elseif ($status == 4) {
+            $footerTracker = "<div>
+                    <center>
+                        <b>
+                            <font color='red'>Your order on delivery..</font>
+                        </b>
+                    </center>
+                </div>
+                <br>";
         } elseif ($status == 'expire') {
             $footerTracker = "<div>
                     <center>

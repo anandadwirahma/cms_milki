@@ -26,11 +26,12 @@ class Login extends CI_Controller {
 					'id'=>$value->id,                    
                     'username'=>$value->user,
                     'password'=>$value->password,
-                    'name'=>$value->name
+                    'name'=>$value->name,
+                    'rule'=>$value->rule
                 );
                 $this->session->set_userdata($sessionArray);
 			}
-			echo "TRUE";
+			echo $this->session->userdata('data')['rule'];
 		}else{
 			echo "FALSE";
 		}

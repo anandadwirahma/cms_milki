@@ -30,11 +30,21 @@
 	                password: $('#Password').val()
 	            },
 	            success: function (data) {
-	            	if (data=='TRUE') {
+	            	
+	            	if (data == 1) {
+	            		
 	            		$("#alertsigin").html("<br><div class='alert alert-success'><strong>Success!</strong> Login Success.</div>").delay(800).slideToggle();
 	            		setTimeout(function() {
 	            			window.location="admin/dashboard";
 						}, 1000);
+
+					} else if (data == 2) {
+
+						$("#alertsigin").html("<br><div class='alert alert-success'><strong>Success!</strong> Login Success.</div>").delay(800).slideToggle();
+	            		setTimeout(function() {
+	            			window.location="currier/dashboard";
+						}, 1000);
+
 	            	} else {
 	            		$("#alertsigin").html("<br><div class='alert alert-danger'><strong>Wrong!</strong> Your Username/password is wrong.</div>").delay(1000).slideToggle();
 	            	}

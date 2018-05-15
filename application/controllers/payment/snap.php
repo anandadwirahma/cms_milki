@@ -153,7 +153,7 @@ class Snap extends CI_Controller {
 
     	$this->m_payment->updateTracker($data); //update tracker
     	$this->m_payment->updtStatusorder($order_id, $status); //update status in table order
-    	redirect('/tracker/status/' . $order_id, 'refresh');
+    	redirect('/tracker/status/' . $order_id);
 
     }
 
