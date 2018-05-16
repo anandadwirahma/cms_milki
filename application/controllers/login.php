@@ -31,7 +31,7 @@ class Login extends CI_Controller {
                 );
                 $this->session->set_userdata($sessionArray);
 			}
-			echo $this->session->userdata('data')['rule'];
+			echo $this->session->userdata('data')['name'];
 		// }else{
 		// 	echo "FALSE";
 		// }
