@@ -19,7 +19,7 @@ class Login extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = md5($this->input->post('password'));
 
-		$query = $this->m_login->cekLogin($username,$password);
+		$query = $this->m_login->cekLogin($username,$password);print_r($query);exit;
 		if($query->num_rows() > 0){
 			foreach ($query->result() as $value) {
 				$sessionArray['data'] = array(
