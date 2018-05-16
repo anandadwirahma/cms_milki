@@ -20,7 +20,7 @@ class Login extends CI_Controller {
 		$password = md5($this->input->post('password'));
 
 		$query = $this->m_login->cekLogin($username,$password);
-		// if($query->num_rows() > 0){
+		if($query->num_rows() > 0){
 			foreach ($query->result() as $value) {
 				$sessionArray['data'] = array(
 					'id'=>$value->id,                    
@@ -31,10 +31,10 @@ class Login extends CI_Controller {
                 );
                 $this->session->set_userdata($sessionArray);
 			}
-			echo $this->session->userdata('data')['name'];
-		// }else{
-		// 	echo "FALSE";
-		// }
+			echo $this->session->userdata('data')['rule'];
+		}else{
+			echo "FALSE";
+		}
 
 	}
 }
