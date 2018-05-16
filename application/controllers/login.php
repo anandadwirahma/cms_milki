@@ -19,22 +19,22 @@ class Login extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = md5($this->input->post('password'));
 
-		$query = $this->m_login->cekLogin($username,$password);print_r($query);exit;
-		if($query->num_rows() > 0){
-			foreach ($query->result() as $value) {
-				$sessionArray['data'] = array(
-					'id'=>$value->id,                    
-                    'username'=>$value->user,
-                    'password'=>$value->password,
-                    'name'=>$value->name,
-                    'rule'=>$value->rule
-                );
-                $this->session->set_userdata($sessionArray);
-			}
-			echo $this->session->userdata('data')['rule'];
-		}else{
-			echo "FALSE";
-		}
+		$query = $this->m_login->cekLogin($username,$password);echo $query;
+		// if($query->num_rows() > 0){
+		// 	foreach ($query->result() as $value) {
+		// 		$sessionArray['data'] = array(
+		// 			'id'=>$value->id,                    
+  //                   'username'=>$value->user,
+  //                   'password'=>$value->password,
+  //                   'name'=>$value->name,
+  //                   'rule'=>$value->rule
+  //               );
+  //               $this->session->set_userdata($sessionArray);
+		// 	}
+		// 	echo $this->session->userdata('data')['rule'];
+		// }else{
+		// 	echo "FALSE";
+		// }
 
 	}
 }
