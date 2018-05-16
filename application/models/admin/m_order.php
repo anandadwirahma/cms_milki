@@ -38,8 +38,8 @@ class m_order extends CI_Model {
 
 	public function getCurrier()
 	{
-		$query = $this->db->query("SELECT * FROM admin WHERE rule = 2 AND id not in (select id_currier from shipping having count(id_currier) >= 5) and status = 'idle';");
-
+		$query = $this->db->query("SELECT * from admin where rule = 2 and `status` = 'idle' and `id` NOT IN (SELECT DISTINCT id_currier FROM shipping where `status` != 'delivered')");
+		
 		return $query->result();
 	}
 
