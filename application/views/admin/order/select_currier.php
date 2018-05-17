@@ -36,6 +36,12 @@
                   <center>Phone</center>
                 </th>
                 <th>
+                  <center>Qty Capacity</center>
+                </th>
+                <th>
+                  <center>Status</center>
+                </th>
+                <th>
                   <center>Select</center>
                 </th>
                 <th>
@@ -48,12 +54,22 @@
               <tr>
                 <td>
                   <center>
-                    <?php echo $value->user; ?>
+                    <?php echo $value->nama; ?>
                   </center>
                 </td>
                 <td>
                   <center>
                     <?php echo $value->phone; ?>
+                  </center>
+                </td>
+                <td>
+                  <center>
+                    <?php echo $value->qty . '/5'; ?>
+                  </center>
+                </td>
+                <td>
+                  <center>
+                    <?php echo $value->status; ?>
                   </center>
                 </td>
                 <td>
@@ -65,7 +81,7 @@
                 <td>
                   <center>
                     <a class="btn btn-primary btn-icon" id="selectCurrier" title="Show Detail." type="button" id-currier="<?php echo $value->id; ?>"
-                      currier-name="<?php echo $value->user; ?>">
+                      currier-name="<?php echo $value->id; ?>">
                       <span class="fa fa-search"></span>
                     </a>
                   </center>

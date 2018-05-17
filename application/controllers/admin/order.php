@@ -128,11 +128,14 @@ class Order extends CI_Controller {
     function process_currier(){
         $orderid = $this->input->post('orderid');
         $currierid = $this->input->post('currierid');
+        $shippingid = rand(pow(10, 5-1), pow(10, 5)-1);
 
         $data = array(
-            "id_order" => $orderid,
+            "id_shipping" => $shippingid,
             "id_currier" => $currierid,
-            "status" => 'on progress'
+            "id_order" => $orderid,
+            "status" => 'on progress',
+            "datetime" => date('Y-m-d H:i:s')
         );
         $this->m_order->saveShipping($data);
 

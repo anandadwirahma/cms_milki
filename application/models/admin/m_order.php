@@ -38,8 +38,18 @@ class m_order extends CI_Model {
 
 	public function getCurrier()
 	{
-		$query = $this->db->query("SELECT * from admin where rule = 2 and `status` = 'idle' and `id` NOT IN (SELECT DISTINCT id_currier FROM shipping where `status` != 'delivered')");
-		
+		$query = $this->db->query("SELECT x.id_currier as id,x.nama as nama,x.phone as phone,COUNT(x.status_dlv) as qty,x.`status` as `status`FROM
+			(
+				SELECT a.id as id_currier, a.`name` as nama,a.phone as phone,
+				CASE WHEN b.`status` = 'on progress' THEN b.`status` END as status_dlv,a.`status` as `status` 
+				from admin a
+				LEFT JOIN shipping b 
+				ON a.id = b.id_currier 
+				where a.rule = 2 and a.`status` = 'idle' 
+				group by id_currier,nama,phone,`status`
+			) x
+			group by id,nama,phone,`status`");
+
 		return $query->result();
 	}
 
@@ -71,11 +81,11 @@ class m_order extends CI_Model {
 
 	public function detailShipping($id_order)
 	{
-		$this->db->select('c.`name` as nama,c.phone as phone,b.lokasi as loc')
+		$this->db->select('b.`name` as nama,b.phone as phone,c.lokasi as loc')
      		->from('shipping a')
-     		->join('order b', 'a.id_order = b.id_order')
-     		->join('admin c', 'a.id_currier = c.id') 
-     		->where('a.id_order', $id_order);
+     		->join('admin b', 'a.id_currier = b.id')
+     		->join('order c', 'c.id_order = a.id_order')
+     		->where('c.id_order', $id_order);
 		return $this->db->get()->result();
 	}
 

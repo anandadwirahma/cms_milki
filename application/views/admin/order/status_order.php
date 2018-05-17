@@ -92,7 +92,9 @@
                         <?php echo $v_track->datetime; } else { echo '-'; } } ?>
                       </span>
                       <h3 class="timeline-header no-border">Processing order.
-                        <a href="<?php echo base_url(); ?>admin/order/currier/<?=$value->id_order;?>">Choose Currier</a>
+                        <?php if($value->status_payment == 3){ ?>
+                          <a href="<?php echo base_url(); ?>admin/order/currier/<?=$value->id_order;?>">Choose Currier</a>
+                        <?php } ?>
                       </h3>
                     </div>
                 </li>
@@ -115,7 +117,7 @@
                       <div class="timeline-body">
                         <?php 
                           if ($detailShipping == '') {
-                            echo "-";
+                            echo "AAAAAAAAAAAAAA";
                           } else {
                             foreach ($detailShipping as $v_shipping) { ?>
                               Currir Name : <?php echo $v_shipping->nama; ?>
