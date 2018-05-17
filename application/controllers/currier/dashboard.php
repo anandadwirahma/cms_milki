@@ -9,12 +9,12 @@ class Dashboard extends CI_Controller {
         	redirect('login');
         }
 
-        $this->load->model('currier/m_dashboard'); 
+        //$this->load->model('currier/m_dashboard'); 
     }
 
 	public function index()
 	{
-        $getCurrier = $this->m_dashboard->getCurrier();
+        //$getCurrier = $this->m_dashboard->getCurrier();
 
         $data = array('content' => 'currier/dashboard/home', 'sessiondata' => $this->session->userdata('data'));
         $this->load->view('currier/index', $data);
