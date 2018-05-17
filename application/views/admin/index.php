@@ -145,6 +145,12 @@
             </a>
           </li>
           <li>
+            <a href="<?php echo base_url(); ?>admin/currier">
+              <i class="fa fa-truck"></i>
+              <span>Currier</span>
+            </a>
+          </li>
+          <li>
             <a href="<?php echo base_url(); ?>admin/stock">
               <i class="fa fa-cubes"></i>
               <span>Stock</span>
