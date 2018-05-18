@@ -9,14 +9,15 @@ class Dashboard extends CI_Controller {
         	redirect('login');
         }
 
-        //$this->load->model('currier/m_dashboard'); 
+        $this->load->model('currier/m_dashboard'); 
     }
 
 	public function index()
 	{
-        //$getCurrier = $this->m_dashboard->getCurrier();
+        $id_currier = $this->session->userdata('data')['id'];
 
-        $data = array('content' => 'currier/dashboard/home', 'sessiondata' => $this->session->userdata('data'));
+        $getTask = $this->m_dashboard->getTask($id_currier);
+        $data = array('content' => 'currier/dashboard/home', 'sessiondata' => $this->session->userdata('data'), 'getTask' => $getTask);
         $this->load->view('currier/index', $data);
 	}
 }

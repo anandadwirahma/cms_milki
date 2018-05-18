@@ -51,26 +51,10 @@ $active_record = TRUE;
 //Add this to fetch the CLEARDB_DATABASE_URL
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-// $db['default']['hostname'] = 'localhost';
-// $db['default']['username'] = 'root';
-// $db['default']['password'] = '';
-// $db['default']['database'] = 'milki';
-// $db['default']['dbdriver'] = 'mysqli';
-// $db['default']['dbprefix'] = '';
-// $db['default']['pconnect'] = FALSE;
-// $db['default']['db_debug'] = TRUE;
-// $db['default']['cache_on'] = FALSE;
-// $db['default']['cachedir'] = '';
-// $db['default']['char_set'] = 'utf8';
-// $db['default']['dbcollat'] = 'utf8_general_ci';
-// $db['default']['swap_pre'] = '';
-// $db['default']['autoinit'] = TRUE;
-// $db['default']['stricton'] = FALSE;
-
-$db['default']['hostname'] = $url["host"];
-$db['default']['username'] = $url["user"];
-$db['default']['password'] = $url["pass"];
-$db['default']['database'] = substr($url["path"], 1);
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'milki';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;
@@ -82,6 +66,22 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+
+// $db['default']['hostname'] = $url["host"];
+// $db['default']['username'] = $url["user"];
+// $db['default']['password'] = $url["pass"];
+// $db['default']['database'] = substr($url["path"], 1);
+// $db['default']['dbdriver'] = 'mysqli';
+// $db['default']['dbprefix'] = '';
+// $db['default']['pconnect'] = FALSE;
+// $db['default']['db_debug'] = TRUE;
+// $db['default']['cache_on'] = FALSE;
+// $db['default']['cachedir'] = '';
+// $db['default']['char_set'] = 'utf8';
+// $db['default']['dbcollat'] = 'utf8_general_ci';
+// $db['default']['swap_pre'] = '';
+// $db['default']['autoinit'] = TRUE;
+// $db['default']['stricton'] = FALSE;
 
 
 /* End of file database.php */

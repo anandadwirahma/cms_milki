@@ -1,167 +1,190 @@
-<!-- Header Content -->
-<section class="content-header">
-	<h1>
-		Order
-		<small>Milki 1.0</small>
-	</h1>
-	<ol class="breadcrumb">
-		<li>
-			<a href="#">
-				<i class="fa fa-dashboard"></i> Order</a>
-		</li>
-		<li class="active">
-			<?php echo $title; ?>
-		</li>
-	</ol>
-</section>
+<!doctype html>
+<html>
 
-<!-- Main content -->
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">
-						<?php echo $title; ?>
-					</h3>
-				</div>
-				<div class="box-body">
-					<table id="example1" class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>
-									<center>Nama Currier</center>
-								</th>
-								<th>
-									<center>Phone</center>
-								</th>
-								<th>
-									<center>Select</center>
-								</th>
-								<th>
-									<center>Action</center>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach ($getCurrier as $value) { ?>
-							<tr>
-								<td>
-									<center>
-										<?php echo $value->user; ?>
-									</center>
-								</td>
-								<td>
-									<center>
-										<?php echo $value->phone; ?>
-									</center>
-								</td>
-								<td>
-									<center>
-										<input type="checkbox" name="checkcurrier" id="<?php echo $value->id; ?>" value="1" tabIndex="1" id_order="<?php echo $id_order; ?>"
-										  id_currier="<?php echo $value->id; ?>" onClick="ckChange(this)">
-									</center>
-								</td>
-								<td>
-									<center>
-										<a class="btn btn-primary btn-icon" id="selectCurrier" title="Show Detail." type="button" id-currier="<?php echo $value->id; ?>"
-										  currier-name="<?php echo $value->user; ?>">
-											<span class="fa fa-search"></span>
-										</a>
-									</center>
-								</td>
-							</tr>
-							<?php } ?>
-						</tbody>
-					</table>
-					<form role="form" class="form-horizontal" action="<?php echo base_url() ?>admin/order/process_currier" method="post">
-						<input type="hidden" name="orderid" id="orderid" value="">
-						<input type="hidden" name="currierid" id="currierid" value="">
-						<div class="box-footer">
-							<button type="submit" class="btn btn-primary" id="submit-form">Submit</button>
-							<a href="<?php echo base_url()?>admin/order" class="btn btn-default">Kembali</a>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<head>
+	<title>MILKI</title>
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
 
-<!-- Modal Detail Order -->
-<div class="modal fade" id="currierTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h3 class="modal-title" id="exampleModalLabel">New message</h3>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div id="currierTask_result"></div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script>
-	$("#alert-confirm").fadeTo(2000, 500).slideUp(500, function () {
-		$("#alert-confirm").slideUp(500);
-	});
-</script>
-
-<!-- Js For Modal -->
-<script>
-	$(document).on("click", "#selectCurrier", function () {
-
-		var currierid = $(this).attr('id-currier');
-		var curriername = $(this).attr('currier-name');
-
-		$.ajax({
-			url: "<?php echo site_url('admin/order/curriertask');?>",
-			type: "POST",
-			data: {
-				currierid: currierid,
-			},
-			success: function (data) {
-				$('#currierTask_result').html(data);
-				$('.modal-title').text('Task For : ' + curriername)
-				$('#currierTaskModal').modal('show');
-			},
-			error: function (data) {
-				alert('Error');
-			}
-		});
-		return false;
-	});
-</script>
-
-<script>
-	function ckChange(ckType) {
-		var ckName = document.getElementsByName(ckType.name);
-		var checked = document.getElementById(ckType.id);
-
-		if (checked.checked) {
-			for (var i = 0; i < ckName.length; i++) {
-
-				if (!ckName[i].checked) {
-					ckName[i].disabled = true;
-				} else {
-					ckName[i].disabled = false;
-					document.getElementById('orderid').value = $(ckType).attr('id_order');
-					document.getElementById('currierid').value = $(ckType).attr('id_currier');
-				}
-			}
-		} else {
-			for (var i = 0; i < ckName.length; i++) {
-				ckName[i].disabled = false;
-				document.getElementById('orderid').value = '';
-				document.getElementById('currierid').value = '';
-			}
+		function hideURLbar() {
+			window.scrollTo(0, 1);
 		}
-	}
-</script>
+	</script>
+	<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-7FdXho5u4vkP219w"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+	    rel='stylesheet' type='text/css'>
+	<link href="<?php echo base_url() ?>assets/trackorder/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<div class="header">
+		<h1>MILKI TRACKING ORDER</h1>
+	</div>
+
+	<div class="content">
+		<?php foreach ($getdata as $value) { ?>
+		<div class="content1">
+			<h2>Order ID:
+				<?php echo '#'. $value->id_order; ?>
+			</h2>
+		</div>
+		<div class="content2">
+			<div class="content2-header1">
+				<p>Nama:
+					<span>
+						<?php echo $value->nama; ?>
+					</span>
+				</p>
+			</div>
+			<div class="content2-header1">
+				<p>Status :
+					<span>
+						<?php 
+							  if ($value->status_payment == 1) {
+		                        echo "Waiting Payment";
+		                      } elseif ($value->status_payment == 2) {
+		                        echo "Checkout Payment";
+		                      } elseif ($value->status_payment == 3) {
+		                        echo "Processing Order";
+		                      } elseif ($value->status_payment == 4) {
+		                        echo "Order Shipped";
+		                      } elseif ($value->status_payment == 5) {
+		                        echo "Order Received";
+		                      } elseif ($value->status_payment == 'expire') {
+		                ?>
+						<font color='red'>
+							<?php echo "Expired Payment"; ?>
+						</font>
+						<?php
+		                      }
+                      	?>
+					</span>
+				</p>
+			</div>
+			<div class="content2-header1">
+				<p>Order Date :
+					<span>
+						<?php echo $value->tgl; ?>
+					</span>
+				</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="content3">
+			<div class="shipment">
+				<div class="confirm">
+					<div class="imgcircle" style="background-color:<?php if(1 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;">
+						<img src="<?php echo base_url() ?>assets/trackorder/images/payment.png">
+					</div>
+					<span class="line" style="background-color:<?php if(1 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;"></span>
+					<p>Waiting Payment</p>
+				</div>
+				<div class="process">
+					<div class="imgcircle" style="background-color:<?php if(2 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;">
+						<img src="<?php echo base_url() ?>assets/trackorder/images/checkout.png">
+					</div>
+					<span class="line" style="background-color:<?php if(2 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;"></span>
+					<p>Checkout Payment</p>
+				</div>
+				<div class="quality">
+					<div class="imgcircle" style="background-color:<?php if(3 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;">
+						<img src="<?php echo base_url() ?>assets/trackorder/images/packaging.png">
+					</div>
+					<span class="line" style="background-color:<?php if(3 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;"></span>
+					<p>Processing Order</p>
+				</div>
+				<div class="dispatch">
+					<div class="imgcircle" style="background-color:<?php if(4 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;">
+						<img src="<?php echo base_url() ?>assets/trackorder/images/shipped.png">
+					</div>
+					<span class="line" style="background-color:<?php if(4 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;"></span>
+					<p>Order Shipped</p>
+				</div>
+				<div class="delivery">
+					<div class="imgcircle" style="background-color:<?php if(5 <= $value->status_payment){ ?> #98D091 <?php } else { ?> #F5998E <?php } ?>;">
+						<img src="<?php echo base_url() ?>assets/trackorder/images/received.png">
+					</div>
+					<p>Order Received</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<br>
+			<div>
+				<?php echo $footerTracker; ?>
+			</div>
+		</div>
+		<?php }; ?>
+
+	</div>
+
+	<div class="footer">
+		<p>Copyright © 2018 Milki. All rights reserved.</p>
+	</div>
+
+
+	<!-- Form For Payment Midtrans -->
+	<form id="payment-form" method="post" action="<?=site_url()?>payment/snap/checkout">
+		<input type="hidden" name="result_type" id="result-type" value="">
+		</div>
+		<input type="hidden" name="result_data" id="result-data" value="">
+		</div>
+	</form>
+	<!-- Javascript For Payment Midtrans -->
+	<script type="text/javascript">
+		$('#pay-button').click(function (event) {
+			event.preventDefault();
+			var orderid = $(this).attr('id-order');
+			$(this).attr("disabled", "disabled");
+
+			$.ajax({
+				url: '<?=site_url()?>payment/snap/token',
+				cache: false,
+				type: "POST",
+				data: {
+					orderid: orderid
+				},
+				success: function (data) {
+					console.log('token = ' + data);
+
+					var resultType = document.getElementById('result-type');
+					var resultData = document.getElementById('result-data');
+
+					function changeResult(type, data) {
+						$("#result-type").val(type);
+						$("#result-data").val(JSON.stringify(data));
+						//resultType.innerHTML = type;
+						//resultData.innerHTML = JSON.stringify(data);
+					}
+
+					snap.pay(data, {
+
+						onSuccess: function (result) {
+							changeResult('success', result);
+							console.log(result.status_message);
+							console.log(result);
+							$("#payment-form").submit();
+						},
+						onPending: function (result) {
+							changeResult('pending', result);
+							console.log(result.status_message);
+							$("#payment-form").submit();
+						},
+						onError: function (result) {
+							changeResult('error', result);
+							console.log(result.status_message);
+							$("#payment-form").submit();
+						}
+					});
+				}
+			});
+		});
+	</script>
+
+</body>
+
+</html>

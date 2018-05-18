@@ -56,9 +56,11 @@
 		                      } elseif ($value->status_payment == 5) {
 		                        echo "Order Received";
 		                      } elseif ($value->status_payment == 'expire') {
-		                ?>		
-		                		<font color='red'><?php echo "Expired Payment"; ?></font>
-		                <?php
+		                ?>
+						<font color='red'>
+							<?php echo "Expired Payment"; ?>
+						</font>
+						<?php
 		                      }
                       	?>
 					</span>
@@ -143,9 +145,9 @@
 				url: '<?=site_url()?>payment/snap/token',
 				cache: false,
 				type: "POST",
-			     data: {
-			     	orderid: orderid
-			    },
+				data: {
+					orderid: orderid
+				},
 				success: function (data) {
 					console.log('token = ' + data);
 

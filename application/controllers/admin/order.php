@@ -52,7 +52,12 @@ class Order extends CI_Controller {
                 
                 $status = '<a class="btn btn-primary btn-icon" data-container="body" data-placement="bottom" style="pointer-events: none;cursor:default;" data-toggle="tooltip"> <span>Processing Order</span> </a>';
             
+            } else if ($value->status_payment == 4) {
+                
+                $status = '<a class="btn btn-warning btn-icon" data-container="body" data-placement="bottom" style="pointer-events: none;cursor:default;" data-toggle="tooltip"> <span>Order Shipped</span> </a>';
+            
             }
+
 
         }
 

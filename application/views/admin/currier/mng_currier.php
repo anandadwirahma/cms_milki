@@ -75,16 +75,17 @@
                 <td>
                   <center>
                     <?php if ($value->status == 'ondelivery') {
-                      echo "--";
-                    } else {?>
-                      <input type="checkbox" name="checkcurrier" id="<?php echo $value->id; ?>" value="1" tabIndex="1" id_currier="<?php echo $value->id; ?>" onClick="ckChange(this)">
+            echo "--";
+            } else {?>
+                    <input type="checkbox" name="checkcurrier" id="<?php echo $value->id; ?>" value="1" tabIndex="1" id_currier="<?php echo $value->id; ?>"
+                        onClick="ckChange(this)">
                     <?php } ?>
                   </center>
                 </td>
                 <td>
                   <center>
                     <a class="btn btn-primary btn-icon" id="selectCurrier" title="Show Detail." type="button" id-currier="<?php echo $value->id; ?>"
-                      currier-name="<?php echo $value->nama; ?>">
+                        currier-name="<?php echo $value->nama; ?>">
                       <span class="fa fa-search"></span>
                     </a>
                   </center>

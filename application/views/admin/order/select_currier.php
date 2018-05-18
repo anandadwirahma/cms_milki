@@ -75,13 +75,13 @@
                 <td>
                   <center>
                     <input type="checkbox" name="checkcurrier" id="<?php echo $value->id; ?>" value="1" tabIndex="1" id_order="<?php echo $id_order; ?>"
-                      id_currier="<?php echo $value->id; ?>" onClick="ckChange(this)">
+                        id_currier="<?php echo $value->id; ?>" onClick="ckChange(this)">
                   </center>
                 </td>
                 <td>
                   <center>
                     <a class="btn btn-primary btn-icon" id="selectCurrier" title="Show Detail." type="button" id-currier="<?php echo $value->id; ?>"
-                      currier-name="<?php echo $value->id; ?>">
+                        currier-name="<?php echo $value->id; ?>">
                       <span class="fa fa-search"></span>
                     </a>
                   </center>

@@ -41,13 +41,13 @@
                 </li>
                 <li>
                   <?php
-                    if(1 <= $value->status_payment){ 
-                      $waiting_payment = "<i class='fa fa-cc-discover bg-green'></i>";
-                    } else {
-                      $waiting_payment = "<i class='fa fa-cc-discover bg-red'></i>";
-                    }
-                    echo $waiting_payment;
-                  ?>
+            if(1 <= $value->status_payment){ 
+            $waiting_payment = "<i class='fa fa-cc-discover bg-green'></i>";
+            } else {
+            $waiting_payment = "<i class='fa fa-cc-discover bg-red'></i>";
+            }
+            echo $waiting_payment;
+          ?>
                     <div class="timeline-item">
                       <span class="time">
                         <?php foreach ($getTracker as $v_track) { if($v_track->status == 'waiting payment') { ?>
@@ -59,13 +59,13 @@
                 </li>
                 <li>
                   <?php
-                    if(2 <= $value->status_payment){ 
-                      $checkout_payment = "<i class='fa fa-check-square-o bg-green'></i>";
-                    } else {
-                      $checkout_payment = "<i class='fa fa-check-square-o bg-red'></i>";
-                    }
-                    echo $checkout_payment;
-                  ?>
+            if(2 <= $value->status_payment){ 
+            $checkout_payment = "<i class='fa fa-check-square-o bg-green'></i>";
+            } else {
+            $checkout_payment = "<i class='fa fa-check-square-o bg-red'></i>";
+            }
+            echo $checkout_payment;
+          ?>
                     <div class="timeline-item">
                       <span class="time">
                         <?php foreach ($getTracker as $v_track) { if($v_track->status == 'capture') { ?>
@@ -78,13 +78,13 @@
                 </li>
                 <li>
                   <?php
-                    if(3 <= $value->status_payment){ 
-                      $process_order = "<i class='fa fa-dropbox bg-green'></i>";
-                    } else {
-                      $process_order = "<i class='fa fa-dropbox bg-red'></i>";
-                    }
-                    echo $process_order;
-                  ?>
+            if(3 <= $value->status_payment){ 
+            $process_order = "<i class='fa fa-dropbox bg-green'></i>";
+            } else {
+            $process_order = "<i class='fa fa-dropbox bg-red'></i>";
+            }
+            echo $process_order;
+          ?>
                     <div class="timeline-item">
                       <span class="time">
                         <?php foreach ($getTracker as $v_track) { if($v_track->status == 'processing order') { ?>
@@ -93,20 +93,20 @@
                       </span>
                       <h3 class="timeline-header no-border">Processing order.
                         <?php if($value->status_payment == 3){ ?>
-                          <a href="<?php echo base_url(); ?>admin/order/currier/<?=$value->id_order;?>">Choose Currier</a>
+                        <a href="<?php echo base_url(); ?>admin/order/currier/<?=$value->id_order;?>">Choose Currier</a>
                         <?php } ?>
                       </h3>
                     </div>
                 </li>
                 <li>
                   <?php
-                    if(4 <= $value->status_payment){ 
-                      $shipped_order = "<i class='fa fa-truck bg-green'></i>";
-                    } else {
-                      $shipped_order = "<i class='fa fa-truck bg-red'></i>";
-                    }
-                    echo $shipped_order;
-                  ?>
+            if(4 <= $value->status_payment){ 
+            $shipped_order = "<i class='fa fa-truck bg-green'></i>";
+            } else {
+            $shipped_order = "<i class='fa fa-truck bg-red'></i>";
+            }
+            echo $shipped_order;
+          ?>
                     <div class="timeline-item">
                       <span class="time">
                         <?php foreach ($getTracker as $v_track) { if($v_track->status == 'on delivery') { ?>
@@ -116,19 +116,21 @@
                       <h3 class="timeline-header">The order on delivery.</h3>
                       <div class="timeline-body">
                         <?php 
-                          if ($detailShipping == '') {
-                            echo "AAAAAAAAAAAAAA";
-                          } else {
-                            foreach ($detailShipping as $v_shipping) { ?>
-                              Currir Name : <?php echo $v_shipping->nama; ?>
-                              </br>
-                              Phone Number : <?php echo $v_shipping->phone; ?>
-                              </br>
-                              Destination : <?php echo $v_shipping->loc; ?>
+              if ($detailShipping == '') {
+                echo "AAAAAAAAAAAAAA";
+              } else {
+                foreach ($detailShipping as $v_shipping) { ?> Currir Name :
+                        <?php echo $v_shipping->nama; ?>
+                        </br>
+                        Phone Number :
+                        <?php echo $v_shipping->phone; ?>
+                        </br>
+                        Destination :
+                        <?php echo $v_shipping->loc; ?>
                         <?php 
-                            } 
-                          }
-                        ?>
+                } 
+              }
+              ?>
                       </div>
                     </div>
                 </li>

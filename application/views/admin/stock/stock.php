@@ -94,7 +94,8 @@
                         type="button" href="<?php echo base_url() ?>admin/stock/edit/<?=$value->id_brg;?>">
                       <span class="fa fa-pencil-square-o"></span>
                     </a>
-                    <a class="btn btn-danger btn-icon" title="Delete Data." data-container="body" data-placement="bottom" data-toggle="tooltip" type="button" onclick="return confirm('Are you sure delete this data ?')" href="<?php echo base_url() ?>admin/stock/delete/<?=$value->id_brg;?>">
+                    <a class="btn btn-danger btn-icon" title="Delete Data." data-container="body" data-placement="bottom" data-toggle="tooltip"
+                        type="button" onclick="return confirm('Are you sure delete this data ?')" href="<?php echo base_url() ?>admin/stock/delete/<?=$value->id_brg;?>">
                       <span class="fa fa-trash-o"></span>
                     </a>
                   </center>
@@ -110,7 +111,7 @@
 </section>
 
 <script>
-    $("#alert-confirm").fadeTo(2000, 500).slideUp(500, function(){
-        $("#alert-confirm").slideUp(500);
-    });
+  $("#alert-confirm").fadeTo(2000, 500).slideUp(500, function () {
+    $("#alert-confirm").slideUp(500);
+  });
 </script>
