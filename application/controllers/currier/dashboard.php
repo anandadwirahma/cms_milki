@@ -20,4 +20,12 @@ class Dashboard extends CI_Controller {
         $data = array('content' => 'currier/dashboard/home', 'sessiondata' => $this->session->userdata('data'), 'getTask' => $getTask);
         $this->load->view('currier/index', $data);
 	}
+
+    public function received()
+    {
+        $recipient = $this->input->post('recipient');
+        $orderid = $this->input->post('orderid');
+
+        print_r($orderid);exit;
+    }
 }

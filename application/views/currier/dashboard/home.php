@@ -154,3 +154,44 @@
       return false;
     });
   </script>
+
+
+    <!-- Modal Confirm Delivered -->
+  <div class="modal fade" id="detailconfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">New message</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="<?php echo base_url() ?>currier/dashboard/received" method="post">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" name="recipient">
+              <input type="hidden" class="form-control" name="orderid" value="<?php $orderid; ?>">
+            </div>
+
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-primary">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).on("click", "#btnConfirm", function () {
+
+      var orderid = $(this).attr('id-order');
+      
+      $('.modal-title').text('Order ID : #' + orderid)
+      $('#detailconfirmModal').modal('show');
+      
+    });
+  </script>
