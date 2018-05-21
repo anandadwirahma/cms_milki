@@ -1,9 +1,0 @@
-{
-    "require": {
-        "php": ">=5.5.17"
-    },
-    "extra": {
-        "heroku": {
-            "index-document": "index.php"
-        }
-    }
