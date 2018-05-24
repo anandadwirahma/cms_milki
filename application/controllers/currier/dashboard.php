@@ -21,11 +21,11 @@ class Dashboard extends CI_Controller {
         $this->load->view('currier/index', $data);
 	}
 
-    public function received()
-    {
-        $recipient = $this->input->post('recipient');
-        $orderid = $this->input->post('orderid');
+    // public function received()
+    // {
+    //     $recipient = $this->input->post('recipient');
+    //     $orderid = $this->input->post('orderid');
 
-        print_r($orderid);exit;
-    }
+    //     print_r($orderid);exit;
+    // }
 }
