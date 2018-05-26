@@ -73,10 +73,56 @@ class Tracker extends CI_Controller {
                 </div>
                 <br>";
         } elseif ($status == 4) {
-            $footerTracker = "<div>
+            $detailShipping = $this->m_tracker->detailShipping($id_order);
+            foreach ($detailShipping as $value) {
+                $nama = $value->nama;
+                $phone = $value->phone;
+                $loc = $value->loc;
+                $status = $value->status;
+            }
+
+            if ($status == 'on progress') {
+                $footerTracker = "<div>
+                    <center>
+                        <b>Currier Info</b> <br>
+                        currier name : " . $nama . " <br>
+                        phone : " . $phone ."
+                    </center>
+                </div>
+                <br>";
+            } elseif ($status == 'waiting confirm') {
+                $footerTracker = "<div>
+                    <center>
+                        <b>
+                            <font color='red'>Please confirm receipt to complete your order.</font>
+                        </b>
+                    </center>
+                </div>
+                <br>
+                <div>
+                    <center>
+                        <a class='btn btn-primary btn-icon' title='Confirm Receive.' data-container='body' data-placement='bottom' data-toggle='tooltip'
+                        type='button' onclick='return confirm('Are you sure confirm your receive order ?')' href=" . base_url() . 'tracker/confirm_receive/'. $id_order . ">
+                            <span>Confirm Receive</span>
+                        </a>
+                    </center>
+                </div>
+                <br>";
+            } else {
+                $footerTracker = "<div>
                     <center>
                         <b>
                             <font color='red'>Your order on delivery..</font>
+                        </b>
+                    </center>
+                </div>
+                <br>";
+            }
+        } elseif ($status == 5) {
+            $footerTracker = "<div>
+                    <center>
+                        <b>
+                            <font color='black'>Thanks you for your ordering..</font>
                         </b>
                     </center>
                 </div>
@@ -95,6 +141,25 @@ class Tracker extends CI_Controller {
         $data = array('getdata' => $getOrder, 'footerTracker' => $footerTracker);
         $this->load->view('tracker/tracker', $data);
 
+    }
+
+    public function confirm_receive()
+    {
+        $id_order = $this->uri->segment(3);
+
+
+        $this->m_tracker->updateShipping($id_order);
+        $data = array(
+                "id_order" => $id_order,
+                "datetime" => date('Y-m-d H:i:s'),
+                "status" => 'delivered',
+                "description" => ''
+            );
+        $this->m_tracker->updateTracker($data);
+        $this->m_tracker->updtStatusorder($id_order,'5');
+
+
+        redirect('tracker/status/'. $id_order);
     }
 
 }

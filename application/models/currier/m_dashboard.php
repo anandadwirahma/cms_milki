@@ -13,4 +13,13 @@ class m_dashboard extends CI_Model {
 		return $this->db->get()->result();
 	}
 
+	public function update_shipping($id_order,$receiver)
+	{
+		$this->db->set('receiver', $receiver);
+		$this->db->set('receivedate', date('Y-m-d H:i:s'));
+		$this->db->set('status', 'waiting confirm');
+		$this->db->where('id_order', $id_order);
+		return $this->db->update('shipping');
+	}
+
 }

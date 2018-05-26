@@ -32,4 +32,33 @@ class m_tracker extends CI_Model {
 		$this->db->update('order');
 	}
 
+	public function detailShipping($id_order)
+	{
+		$this->db->select('b.`name` as nama,b.phone as phone,c.lokasi as loc,a.status as status')
+     		->from('shipping a')
+     		->join('admin b', 'a.id_currier = b.id')
+     		->join('order c', 'c.id_order = a.id_order')
+     		->where('c.id_order', $id_order);
+		return $this->db->get()->result();
+	}
+
+	public function updateShipping($id_order)
+	{
+		$this->db->set('status', 'done');
+		$this->db->where('id_order', $id_order);
+		$this->db->update('shipping');
+	}
+
+	public function updateTracker($data)
+	{
+		$this->db->insert('tracker',$data);
+	}
+
+	public function updtStatusorder($id_order,$status)
+	{
+		$this->db->set('status_payment', $status);
+		$this->db->where('id_order', $id_order);
+		return $this->db->update('order');
+	}
+
 }

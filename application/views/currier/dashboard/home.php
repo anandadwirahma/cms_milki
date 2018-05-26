@@ -167,11 +167,11 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="<?php echo base_url() ?>currier/dashboard/received" method="post">
+          <form role="form" action="<?php echo base_url() ?>currier/dashboard/received" method="post">
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" name="recipient">
-              <input type="hidden" class="form-control" name="orderid" value="<?php $orderid; ?>">
+              <input type="text" class="form-control" data-validation="required" placeholder="Recipient Name" name="recipient">
+              <input type="hidden" class="form-control" name="orderid" id="poporderid" value="">
             </div>
 
             <div class="modal-footer">
@@ -185,12 +185,19 @@
     </div>
   </div>
 
+  <!-- JS Form Validation -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+  <script>
+    $.validate();
+  </script>
+
   <script>
     $(document).on("click", "#btnConfirm", function () {
 
       var orderid = $(this).attr('id-order');
       
       $('.modal-title').text('Order ID : #' + orderid)
+      document.getElementById("poporderid").value = orderid
       $('#detailconfirmModal').modal('show');
       
     });

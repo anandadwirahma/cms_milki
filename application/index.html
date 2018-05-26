@@ -59,10 +59,10 @@
                                     </div>
                                 </div>
 
-                                <!-- DONUT CHART -->
+                                <!-- Msg -->
                                 <div class="box box-danger">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">Donut Chart</h3>
+                                        <h3 class="box-title">Message Per Channel</h3>
 
                                         <div class="box-tools pull-right">
                                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                     <div class="box-body chart-responsive">
-                                        <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+                                        <div class="chart" id="channelchart" style="height: 300px; position: relative;"></div>
                                     </div>
                                     <!-- /.box-body -->
                                 </div>
@@ -114,7 +114,7 @@
 <script src="{% static 'components/bower_components/raphael/raphael.min.js' %}"></script>
 <script src="{% static 'components/bower_components/morris.js/morris.min.js' %}"></script>
 
-<!-- For Datepicker -->
+<!-- JS Datepicker -->
 <script type="text/javascript">
     $(function () {
         $('#daterange-btn').daterangepicker({
@@ -166,7 +166,7 @@
     $(function () {
         "use strict";
 
-        // AREA CHART
+        // MESSAGE IN OUT CHART
         var area = new Morris.Area({
             element: 'msginout-chart',
             resize: true,
@@ -182,7 +182,7 @@
             hideHover: 'auto'
         });
 
-        // LINE CHART
+        // REGISTER USER CHART
         var line = new Morris.Line({
             element: 'line-chart',
             resize: true,
@@ -192,13 +192,38 @@
                 }
             },
             xkey: 'y',
-            ykeys: ['item1'],
-            labels: ['Total User'],
-            lineColors: ['#3c8dbc'],
+            ykeys: ['item1', 'item2'],
+            labels: ['User Active', 'User Idle'],
+            lineColors: ['#3c8dbc', '#FFA500'],
             hideHover: 'auto'
         });
-
     });
+</script>
+
+<!--MEESAGE PER CHANNEL CHART-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable({
+            {
+                msg_channel | safe
+            }
+        });
+
+        var options = {
+            title: ''
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('channelchart'));
+
+        chart.draw(data, options);
+    }
 </script>
 
 </body>
