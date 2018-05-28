@@ -5,7 +5,7 @@ class m_dashboard extends CI_Model {
 
 	public function getRevenue()
 	{
-		$query = $this->db->query("SELECT  DATE_FORMAT(tgl, '%Y%m')  AS periode, sum(harga) as harga FROM `order` group by periode");
+		$query = $this->db->query("SELECT  DATE_FORMAT(tgl, '%Y%m')  AS periode, sum(harga) as harga FROM `order` WHERE status_payment = '5' group by periode");
 
 		return $query->result();
 	}
