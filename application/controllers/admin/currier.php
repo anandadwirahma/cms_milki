@@ -11,6 +11,14 @@ class Currier extends CI_Controller {
         }
 
         $this->load->model('admin/m_currier'); 
+
+        $getCurrier = $this->m_currier->getCurrier();
+        foreach ($getCurrier as $value) {
+            $id = $value->id;
+            if ($value->qty == 0) {
+                $this->m_currier->updateIdle($id);
+            }
+        }
     }
 
 	public function index()

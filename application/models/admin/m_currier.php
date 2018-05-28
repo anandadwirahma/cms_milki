@@ -12,8 +12,7 @@ class m_currier extends CI_Model {
 				from admin a
 				LEFT JOIN shipping b 
 				ON a.id = b.id_currier 
-				where a.rule = 2 
-				group by id_currier,nama,phone,`status`
+				where a.rule = 2
 			) x
 			group by id,nama,phone,`status`");
 
@@ -34,6 +33,13 @@ class m_currier extends CI_Model {
 		$this->db->set('status', 'ondelivery');
 		$this->db->where('id', $currierid);
 		return $this->db->update('admin');
+	}
+
+	public function updateIdle($id_currier)
+	{
+		$this->db->set('status', 'idle');
+		$this->db->where('id', $id_currier);
+		$this->db->update('admin');
 	}
 
 }

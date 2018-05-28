@@ -96,7 +96,7 @@
                         $status = '<a href="'. base_url() .'admin/order/status/'. $value->id_order .'" class="btn btn-warning btn-icon" data-container="body" data-placement="bottom" data-toggle="tooltip"> <span>Order Shipped</span> </a>';
                       } elseif ($value->status_payment == 5) {
                         $status = '<a href="'. base_url() .'admin/order/status/'. $value->id_order .'" class="btn btn-success btn-icon" data-container="body" data-placement="bottom" data-toggle="tooltip"> <span>Order Received</span> </a>';
-                      } elseif ($value->status_payment == 'expire') {
+                      } elseif ($value->status_payment == 'expired') {
                         $status = '<a href="'. base_url() .'admin/order/status/'. $value->id_order .'" class="btn btn-danger btn-icon" data-container="body" data-placement="bottom" data-toggle="tooltip"> <span>Expired Payment</span> </a>';
                       }
 

@@ -15,6 +15,9 @@ class Order extends CI_Controller {
         $this->load->library('midtrans');
         $this->midtrans->config($params);
         $this->load->helper('url'); 
+
+        //cront update status expired
+        $this->m_order->updtOrderexpr();
     }
 
 	public function index()
@@ -96,8 +99,9 @@ class Order extends CI_Controller {
         $getOrder = $this->m_order->getOrder($id_order);
         $getTracker = $this->m_order->getTracker($id_order);
         $detailShipping = $this->m_order->detailShipping($id_order);
+        $detailReceive = $this->m_order->detailReceive($id_order);
 
-        $data = array('content' => 'admin/order/status_order', 'title' => 'Status Order' ,'sessiondata' => $this->session->userdata('data'),'getdata' => $getOrder, 'getTracker' => $getTracker, 'detailShipping' => $detailShipping);
+        $data = array('content' => 'admin/order/status_order', 'title' => 'Status Order' ,'sessiondata' => $this->session->userdata('data'),'getdata' => $getOrder, 'getTracker' => $getTracker, 'detailShipping' => $detailShipping, 'detailReceive' => $detailReceive);
         $this->load->view('admin/index', $data);
     }
 

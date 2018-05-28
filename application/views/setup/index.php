@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/login/css/normalize.min.css">
   <link rel='stylesheet prefetch' href="<?php echo base_url(); ?>assets/login/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/login/css/style.css">
-
 </head>
 
 <body>

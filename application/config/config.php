@@ -23,8 +23,8 @@
 |
 */
 //$config['base_url'] = 'http://localhost/cms_milki/';
-$config['base_url'] = 'https://milki.herokuapp.com/';
-//$config['base_url'] = 'https://22b1c5c3.ngrok.io/cms_milki/';
+//$config['base_url'] = 'https://milki.herokuapp.com/';
+$config['base_url'] = 'https://902569ad.ngrok.io/cms_milki/';
 /*
 |--------------------------------------------------------------------------
 | Index File

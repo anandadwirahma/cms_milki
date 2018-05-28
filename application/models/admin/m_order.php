@@ -89,4 +89,24 @@ class m_order extends CI_Model {
 		return $this->db->get()->result();
 	}
 
+	public function detailReceive($id_order)
+	{
+		$this->db->select('a.receiver as receiver,a.receivedate as receivedate,b.status_payment as status')
+     		->from('shipping a')
+     		->join('order b', 'a.id_order = b.id_order')
+     		->where('a.id_order', $id_order);
+		return $this->db->get()->result();
+	}
+
+
+	public function updtOrderexpr()
+	{
+		$NOW = date('Y-m-d H:i:s');
+
+		$this->db->set('status_payment', 'expired');
+		$this->db->where('status_payment', '1');
+		$this->db->where('DATE_ADD(tgl, INTERVAL 1 HOUR) < ', $NOW);
+		return $this->db->update('order');
+	}
+
 }
