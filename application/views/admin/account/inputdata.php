@@ -68,7 +68,7 @@
                   <option value="">-Select Rule-</option>
                   <option value="1">Admin</option>
                   <option value="2">Currier</option>
-                  <option value="3">Karyawan</option>
+                  <!-- <option value="3">Karyawan</option> -->
                 </select>
               </div>
             </div>
