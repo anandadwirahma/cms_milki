@@ -24,7 +24,7 @@
 */
 //$config['base_url'] = 'http://localhost/cms_milki/';
 $config['base_url'] = 'https://milki.herokuapp.com/';
-//$config['base_url'] = 'https://902569ad.ngrok.io/cms_milki/';
+//$config['base_url'] = 'https://3e3796f5.ngrok.io/cms_milki/';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -365,7 +365,5 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
-
-
 /* End of file config.php */
 /* Location: ./application/config/config.php */

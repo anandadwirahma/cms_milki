@@ -75,7 +75,7 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Data Admin</h3>
-                    <div class="form-group pull-right">
+                    <!-- <div class="form-group pull-right">
                         <div class="input-group">
                             <button type="button" class="btn btn-default pull-right" id="daterange-btn">
                                 <span>
@@ -84,7 +84,7 @@
                                 <i class="fa fa-caret-down"></i>
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="box-body">
                     <div class="col-md-6">
@@ -156,9 +156,9 @@
 </section>
 
 <!-- jQuery 3 -->
-<script src="<?php echo base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script> -->
 <!-- Bootstrap 3.3.7 -->
-<script src="<?php echo base_url(); ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
 <!-- date-range-picker -->
 <script src="<?php echo base_url(); ?>assets/bower_components/moment/min/moment.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
@@ -168,7 +168,7 @@
 <script src="<?php echo base_url(); ?>assets/bower_components/raphael/raphael.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/bower_components/morris.js/morris.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script> -->
 
 <!-- JS Datepicker -->
 <script type="text/javascript">

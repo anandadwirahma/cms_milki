@@ -36,7 +36,7 @@
         </a>
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
-            <li class="dropdown messages-menu">
+            <!-- <li class="dropdown messages-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-envelope-o"></i>
                 <span class="label label-success">4</span>
@@ -85,7 +85,7 @@
                   <a href="#">View all</a>
                 </li>
               </ul>
-            </li>
+            </li> -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="<?php echo base_url(); ?>assets/dist/img/avatar-admin.jpg" class="user-image" alt="User Image">
@@ -101,11 +101,11 @@
                   </p>
                 </li>
                 <li class="user-footer">
-                  <div class="pull-left">
+                  <!-- <div class="pull-left">
                     <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  </div>
+                  </div> -->
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="<?php echo base_url(); ?>login/signout" class="btn btn-default btn-flat">Sign out</a>
                   </div>
                 </li>
               </ul>
@@ -138,12 +138,12 @@
               <span>Dashboard</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="<?php echo base_url(); ?>currier/history">
               <i class="fa fa-book"></i>
               <span>History</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </section>
     </aside>

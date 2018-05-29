@@ -37,4 +37,9 @@ class Login extends CI_Controller {
 		}
 
 	}
+
+	function signout(){
+		$this->session->sess_destroy();
+		redirect('admin/dashboard');
+	}
 }
