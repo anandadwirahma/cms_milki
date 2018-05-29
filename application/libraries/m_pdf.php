@@ -2,7 +2,7 @@
 class M_pdf {
 	
 	function __construct(){ 
-		include_once APPPATH.'third_party\mpdf\vendor\autoload.php'; 
+		include_once APPPATH.'third_party/mpdf/vendor/autoload.php'; 
 	} 
 		
 	function pdf(){ 
