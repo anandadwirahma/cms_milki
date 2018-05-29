@@ -25,7 +25,7 @@ class Tracker extends CI_Controller {
 
         if ($status > 1) {
             //-Trigger check status transaction
-            $status_payment = $this->midtrans->($id_order);
+            $status_payment = $this->midtrans->status($id_order);
             $transaction_time = $status_payment->transaction_time;
             $transaction_status = $status_payment->transaction_status;
             $payment_type = $status_payment->payment_type;
